@@ -1,0 +1,110 @@
+{
+  "name": "serafeims-bookmarks",
+  "displayName": "Serafeim's Bookmarks",
+  "description": "A novel way to bookmark your code",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.98.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:codeBookmarks.addBookmark",
+    "onCommand:codeBookmarks.removeBookmark",
+    "onView:codeBookmarksView",
+    "onView:codeBookmarksSearch"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codeBookmarks.addBookmark",
+        "title": "Add Code Bookmark"
+      },
+      {
+        "command": "codeBookmarks.removeBookmark",
+        "title": "Remove Code Bookmark"
+      },
+      {
+        "command": "codeBookmarks.clearAllBookmarks",
+        "title": "Clear All Bookmarks"
+      }
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "codeBookmarksView",
+          "name": "Code Bookmarks"
+        }
+      ],
+      "codeBookmarks": [
+        {
+          "id": "codeBookmarksSearch",
+          "name": "Search",
+          "when": "view == codeBookmarksView"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "codeBookmarks",
+          "title": "Code Bookmarks",
+          "icon": "$(bookmark)"
+        }
+      ]
+    },
+    "menus": {
+      "editor/context": [
+        {
+          "command": "codeBookmarks.addBookmark",
+          "group": "navigation"
+        },
+        {
+          "command": "codeBookmarks.removeBookmark",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "codeBookmarks.removeBookmark",
+          "when": "view == codeBookmarksView",
+          "group": "inline"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "codeBookmarks.addBookmark",
+        "key": "ctrl+shift+b",
+        "mac": "cmd+shift+b"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "test-compile": "tsc -p ./",
+    "test-watch": "tsc -watch -p ./",
+    "pretest": "npm run test-compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.60.0",
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "16.x",
+    "eslint": "^8.20.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.0.0",
+    "typescript": "^4.7.4",
+    "ts-loader": "^9.3.1",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "@vscode/test-electron": "^2.1.5"
+  }
+}
