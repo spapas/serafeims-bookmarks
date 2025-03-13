@@ -1,7 +1,7 @@
 {
   "name": "serafeims-bookmarks",
   "displayName": "Serafeim's Bookmarks",
-  "description": "A novel way to bookmark your code",
+  "description": "An opinionated way to bookmark your code",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.98.0"
@@ -9,6 +9,10 @@
   "categories": [
     "Other"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spapas/serafeims-bookmarks.git"
+  },
   "activationEvents": [
     "onCommand:codeBookmarks.addBookmark",
     "onCommand:codeBookmarks.removeBookmark",
