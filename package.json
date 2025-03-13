@@ -1,8 +1,9 @@
 {
   "name": "serafeims-bookmarks",
+  "publisher": "serafeim",
   "displayName": "Serafeim's Bookmarks",
   "description": "An opinionated way to bookmark your code",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.98.0"
   },
