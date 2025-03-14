@@ -3,23 +3,19 @@
   "publisher": "serafeim",
   "displayName": "Serafeim's Bookmarks",
   "description": "An opinionated way to bookmark your code",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "engines": {
     "vscode": "^1.98.0"
   },
   "categories": [
     "Other"
   ],
+  "icon": "assets/icon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/spapas/serafeims-bookmarks.git"
   },
-  "activationEvents": [
-    "onCommand:codeBookmarks.addBookmark",
-    "onCommand:codeBookmarks.removeBookmark",
-    "onView:codeBookmarksView",
-    "onView:codeBookmarksSearch"
-  ],
+
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
@@ -34,20 +30,18 @@
       {
         "command": "codeBookmarks.clearAllBookmarks",
         "title": "Clear All Bookmarks"
+      },
+      {
+        "command": "codeBookmarks.showCustomQuickPick",
+        "title": "Show bookmarks Quick Pick"
       }
     ],
     "views": {
-      "explorer": [
-        {
-          "id": "codeBookmarksView",
-          "name": "Code Bookmarks"
-        }
-      ],
       "codeBookmarks": [
         {
-          "id": "codeBookmarksSearch",
-          "name": "Search",
-          "when": "view == codeBookmarksView"
+          "id": "codeBookmarksView",
+          "name": "Code Bookmarks",
+          "icon": "$(bookmark)"
         }
       ]
     },
@@ -84,6 +78,11 @@
         "command": "codeBookmarks.addBookmark",
         "key": "ctrl+shift+b",
         "mac": "cmd+shift+b"
+      },
+      {
+        "command": "codeBookmarks.showCustomQuickPick",
+        "key": "ctrl+alt+shift+f",
+        "mac": "cmd+alt+shift+f"
       }
     ]
   },
