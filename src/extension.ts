@@ -61,6 +61,11 @@ export class BookmarkProvider implements vscode.TreeDataProvider<BookmarkItem> {
   constructor(private context: vscode.ExtensionContext) {
     // Load existing bookmarks 
     const bookmarksFilePath = this.getBookmarksFilePath();
+    if (!fs.existsSync(bookmarksFilePath)) {
+      // Create the file with an empty JSON array if it doesn't exist
+      fs.writeFileSync(bookmarksFilePath, '[]', 'utf8');
+    }
+    
     this.bookmarks = JSON.parse(fs.readFileSync(
       bookmarksFilePath,
       'utf8'
